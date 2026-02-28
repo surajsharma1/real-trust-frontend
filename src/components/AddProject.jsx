@@ -94,12 +94,19 @@ export default function AddProject() {
     }
   };
 
+  // Helper to get image URL
+  const getImageUrl = (img) => {
+    if (!img) return "https://via.placeholder.com/400x250";
+    if (img.startsWith('http')) return img;
+    return img;
+  };
+
   return (
-    <div className="manage-items-container">
+    <div className="manage-projects-container">
       {/* Form Section */}
-      <div className="item-form-section">
+      <div className="project-form-section">
         <h3>{editingId ? "Edit Project" : "Add New Project"}</h3>
-        <form onSubmit={submit} className="item-form">
+        <form onSubmit={submit} className="project-form">
           <div className="form-group-admin">
             <label className="form-label">Project Name</label>
             <input 
@@ -132,7 +139,7 @@ export default function AddProject() {
           {existingImage && (
             <div className="current-image-preview">
               <p>Current Image:</p>
-              <img src={existingImage} alt="Current" />
+              <img src={getImageUrl(existingImage)} alt="Current" />
             </div>
           )}
           
@@ -149,31 +156,29 @@ export default function AddProject() {
         </form>
       </div>
 
-      {/* List Section */}
-      <div className="item-list-section">
-        <h3>Existing Projects ({projects.length})</h3>
+      {/* List Section - Using landing page projects-grid style */}
+      <div className="projects-list-section">
+        <h3>All Projects ({projects.length})</h3>
         {fetching ? (
-          <p>Loading projects...</p>
+          <p className="loading-message">Loading projects...</p>
         ) : projects.length === 0 ? (
-          <p className="empty-message">No projects yet. Add your first project above.</p>
+          <p className="empty-message">No projects yet. Add your first project!</p>
         ) : (
-          <div className="items-grid">
+          <div className="projects-grid">
             {projects.map(project => (
-              <div key={project._id} className="item-card">
-                <div className="item-image">
-                  <img src={project.image} alt={project.name} />
-                </div>
-                <div className="item-details">
-                  <h4>{project.name}</h4>
-                  <p>{project.description.substring(0, 100)}...</p>
-                </div>
-                <div className="item-actions">
-                  <button onClick={() => handleEdit(project)} className="btn-edit">
-                    ✏️ Edit
-                  </button>
-                  <button onClick={() => handleDelete(project._id)} className="btn-delete">
-                    🗑️ Delete
-                  </button>
+              <div key={project._id} className="project-card">
+                <img src={getImageUrl(project.image)} alt={project.name} />
+                <div className="project-content">
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                  <div className="project-actions">
+                    <button onClick={() => handleEdit(project)} className="btn-edit">
+                      ✏️ Edit
+                    </button>
+                    <button onClick={() => handleDelete(project._id)} className="btn-delete">
+                      🗑️ Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

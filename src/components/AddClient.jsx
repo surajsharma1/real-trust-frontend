@@ -92,12 +92,19 @@ export default function AddClient() {
     }
   };
 
+  // Helper to get image URL
+  const getImageUrl = (img) => {
+    if (!img) return "https://via.placeholder.com/150";
+    if (img.startsWith('http')) return img;
+    return img;
+  };
+
   return (
-    <div className="manage-items-container">
+    <div className="manage-clients-container">
       {/* Form Section */}
-      <div className="item-form-section">
+      <div className="client-form-section">
         <h3>{editingId ? "Edit Client" : "Add New Client"}</h3>
-        <form onSubmit={submit} className="item-form">
+        <form onSubmit={submit} className="client-form">
           <div className="form-group-admin">
             <label className="form-label">Client Name</label>
             <input 
@@ -113,7 +120,7 @@ export default function AddClient() {
             <input 
               required
               className="form-input-admin" 
-              placeholder="e.g. CEO"
+              placeholder="e.g. CEO, TechCorp"
               value={client.designation} 
               onChange={e => setClient({...client, designation: e.target.value})}
             />
@@ -142,7 +149,7 @@ export default function AddClient() {
           {existingImage && (
             <div className="current-image-preview">
               <p>Current Image:</p>
-              <img src={existingImage} alt="Current" />
+              <img src={getImageUrl(existingImage)} alt="Current" />
             </div>
           )}
           
@@ -159,26 +166,24 @@ export default function AddClient() {
         </form>
       </div>
 
-      {/* List Section */}
-      <div className="item-list-section">
-        <h3>Existing Clients ({clients.length})</h3>
+      {/* List Section - Using landing page clients-grid style */}
+      <div className="clients-list-section">
+        <h3>All Clients ({clients.length})</h3>
         {fetching ? (
-          <p>Loading clients...</p>
+          <p className="loading-message">Loading clients...</p>
         ) : clients.length === 0 ? (
-          <p className="empty-message">No clients yet. Add your first client above.</p>
+          <p className="empty-message">No clients yet. Add your first client!</p>
         ) : (
-          <div className="items-grid">
+          <div className="clients-grid">
             {clients.map(item => (
-              <div key={item._id} className="item-card">
-                <div className="item-image client-image">
-                  <img src={item.image} alt={item.name} />
+              <div key={item._id} className="client-card">
+                <div className="client-img-wrapper">
+                  <img src={getImageUrl(item.image)} alt={item.name} />
                 </div>
-                <div className="item-details">
-                  <h4>{item.name}</h4>
-                  <p className="item-designation">{item.designation}</p>
-                  <p className="item-description">{item.description.substring(0, 80)}...</p>
-                </div>
-                <div className="item-actions">
+                <p className="client-desc">"{item.description}"</p>
+                <h4 className="client-name">{item.name}</h4>
+                <span className="client-desig">{item.designation}</span>
+                <div className="client-card-actions">
                   <button onClick={() => handleEdit(item)} className="btn-edit">
                     ✏️ Edit
                   </button>
