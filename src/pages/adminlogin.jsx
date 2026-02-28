@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import Logo from "../assets/images/logo.svg";
 
 export default function AdminLogin() {
     const [form, setForm] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const login = async (e) => {
         e.preventDefault();
@@ -25,41 +28,62 @@ export default function AdminLogin() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-                <h2 className="text-3xl font-bold mb-8 text-center text-blue-900">Admin Portal</h2>
-                
-                {error && <div className="mb-4 text-red-600 text-sm text-center bg-red-50 py-2 rounded border border-red-200">{error}</div>}
-                
-                <form onSubmit={login} className="space-y-6">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                        <input 
-                            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                            placeholder="admin@example.com" 
-                            type="email"
-                            required
-                            onChange={e => setForm({...form, email: e.target.value})} 
-                        />
+        <div className="login-page">
+            {/* Background Shapes */}
+            <div className="bg-shapes">
+                <div className="shape shape-1"></div>
+                <div className="shape shape-2"></div>
+                <div className="shape shape-5"></div>
+            </div>
+
+            <div className="login-container">
+                <div className="login-card">
+                    <div className="login-header">
+                        <img src={Logo} alt="Logo" className="login-logo" />
+                        <h1>Admin Portal</h1>
+                        <p>Welcome back! Please login to continue.</p>
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                        <input 
-                            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-                            placeholder="••••••••" 
-                            type="password"
-                            required
-                            onChange={e => setForm({...form, password: e.target.value})} 
-                        />
+                    
+                    {error && <div className="error-message">{error}</div>}
+                    
+                    <form onSubmit={login} className="login-form">
+                        <div className="form-group">
+                            <label>Email Address</label>
+                            <input 
+                                className="form-input"
+                                placeholder="admin@example.com" 
+                                type="email"
+                                required
+                                value={form.email}
+                                onChange={e => setForm({...form, email: e.target.value})} 
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <input 
+                                className="form-input"
+                                placeholder="••••••••" 
+                                type="password"
+                                required
+                                value={form.password}
+                                onChange={e => setForm({...form, password: e.target.value})} 
+                            />
+                        </div>
+                        <button 
+                            type="submit" 
+                            disabled={loading}
+                            className="login-button"
+                        >
+                            {loading ? "Logging in..." : "Login"}
+                        </button>
+                    </form>
+                    
+                    <div className="login-footer">
+                        <button className="back-link" onClick={() => navigate('/')}>
+                            ← Back to Home
+                        </button>
                     </div>
-                    <button 
-                        type="submit" 
-                        disabled={loading}
-                        className="w-full bg-blue-600 text-white p-3 rounded font-semibold hover:bg-blue-700 transition disabled:bg-blue-400"
-                    >
-                        {loading ? "Logging in..." : "Login"}
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
     );

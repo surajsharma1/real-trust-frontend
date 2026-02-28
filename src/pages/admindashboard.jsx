@@ -1,76 +1,77 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AddProject from "../components/AddProject";
 import AddClient from "../components/AddClient";
 import ContactList from "../components/ContactList";
 import SubscriberList from "../components/SubscriberList";
+import Logo from "../assets/images/logo.svg";
 
 export default function AdminDashboard() {
-
   const [activeTab, setActiveTab] = useState("projects");
+  const navigate = useNavigate();
 
   const handleLogout = () => {
       localStorage.removeItem("token");
       window.location.href = "/login";
   };
 
+  const tabs = [
+    { id: "projects", label: "Manage Projects" },
+    { id: "clients", label: "Manage Clients" },
+    { id: "contacts", label: "Contact Submissions" },
+    { id: "subscribers", label: "Newsletter Subscribers" }
+  ];
+
+  const getTitle = () => {
+    switch(activeTab) {
+      case "projects": return "Project Management";
+      case "clients": return "Client Management";
+      case "contacts": return "Contact Responses";
+      case "subscribers": return "Subscribed Emails";
+      default: return "Dashboard";
+    }
+  };
+
   return (
-    <div className="flex min-h-screen bg-gray-50 font-sans">
-      
+    <div className="admin-dashboard">
       {/* Sidebar Navigation */}
-      <aside className="w-64 bg-blue-900 text-white flex flex-col shadow-xl">
-        <div className="p-6 text-2xl font-bold border-b border-blue-800 text-center tracking-wider">
-          Admin Panel
+      <aside className="admin-sidebar">
+        <div className="sidebar-header">
+          <img src={Logo} alt="Logo" className="sidebar-logo" />
+          <h2>Admin Panel</h2>
         </div>
-        <nav className="flex-1 p-4 space-y-2 mt-4 text-sm font-medium">
-          <button 
-            onClick={() => setActiveTab("projects")} 
-            className={`w-full text-left p-3 rounded transition ${activeTab === "projects" ? "bg-blue-700 shadow-inner" : "hover:bg-blue-800"}`}
-          >
-            Manage Projects
-          </button>
-          <button 
-            onClick={() => setActiveTab("clients")} 
-            className={`w-full text-left p-3 rounded transition ${activeTab === "clients" ? "bg-blue-700 shadow-inner" : "hover:bg-blue-800"}`}
-          >
-            Manage Clients
-          </button>
-          <button 
-            onClick={() => setActiveTab("contacts")} 
-            className={`w-full text-left p-3 rounded transition ${activeTab === "contacts" ? "bg-blue-700 shadow-inner" : "hover:bg-blue-800"}`}
-          >
-            Contact Submissions
-          </button>
-          <button 
-            onClick={() => setActiveTab("subscribers")} 
-            className={`w-full text-left p-3 rounded transition ${activeTab === "subscribers" ? "bg-blue-700 shadow-inner" : "hover:bg-blue-800"}`}
-          >
-            Newsletter Subscribers
-          </button>
-        </nav>
-        <div className="p-4 border-t border-blue-800">
+        <nav className="sidebar-nav">
+          {tabs.map(tab => (
             <button 
-                onClick={handleLogout} 
-                className="w-full bg-red-500 hover:bg-red-600 text-white p-2 rounded transition font-semibold"
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)} 
+              className={`nav-button ${activeTab === tab.id ? "active" : ""}`}
             >
+              {tab.label}
+            </button>
+          ))}
+        </nav>
+        <div className="sidebar-footer">
+            <button onClick={handleLogout} className="logout-button">
                 Logout
+            </button>
+            <button onClick={() => navigate('/')} className="back-button">
+                ← Back to Home
             </button>
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 p-10 overflow-y-auto">
-        <header className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-800 capitalize">
-                {activeTab === "projects" && "Project Management"}
-                {activeTab === "clients" && "Client Management"}
-                {activeTab === "contacts" && "Contact Responses"}
-                {activeTab === "subscribers" && "Subscribed Emails"}
-            </h1>
-            <p className="text-gray-500 mt-1 text-sm">View and manage your application data.</p>
+      <main className="admin-main">
+        <header className="admin-header">
+            <div>
+                <h1 className="admin-title">{getTitle()}</h1>
+                <p className="admin-subtitle">View and manage your application data.</p>
+            </div>
         </header>
         
         {/* Dynamic Component Rendering */}
-        <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+        <div className="admin-content-card">
             {activeTab === "projects" && <AddProject />}
             {activeTab === "clients" && <AddClient />}
             {activeTab === "contacts" && <ContactList />}
