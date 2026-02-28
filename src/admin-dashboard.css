@@ -140,3 +140,237 @@
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     border: 1px solid #e5e7eb;
 }
+
+/* Form Styles - Replaces Tailwind CSS */
+.max-w-xl {
+    max-width: 36rem;
+}
+
+.space-y-4 > * + * {
+    margin-top: 1rem;
+}
+
+.form-group-admin {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+.form-input-admin {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input-admin:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    height: 6rem;
+    resize: vertical;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-file-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background-color: #f9fafb;
+    font-size: 0.875rem;
+}
+
+.btn-primary-admin {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-primary-admin:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-primary-admin:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+/* Data Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.data-table th {
+    background-color: #f3f4f6;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #6b7280;
+}
+
+.data-table tr:hover {
+    background-color: #f9fafb;
+}
+
+.btn-delete {
+    background-color: #dc2626;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+.btn-edit {
+    background-color: #2563eb;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    border: none;
+    margin-right: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #1d4ed8;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success Message */
+.success-message {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #a7f3d0;
+}
+
+/* Error Message */
+.error-message-admin {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #fecaca;
+}
+
+/* Subscriber List Styles */
+.subscriber-list {
+    max-width: 28rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.subscriber-header {
+    background-color: #f9fafb;
+    padding: 12px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.subscriber-header h3 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.subscriber-list-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: white;
+}
+
+.subscriber-list-items li {
+    padding: 16px 24px;
+    font-size: 0.875rem;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.subscriber-list-items li:last-child {
+    border-bottom: none;
+}
+
+.subscriber-list-items li:hover {
+    background-color: #f9fafb;
+}
+
+/* Table Container */
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+}

@@ -29,17 +29,17 @@ export default function SubscriberList() {
   const displaySubs = subs.length > 0 ? subs : fallbackSubs;
 
   return (
-    <div className="max-w-md border rounded-lg overflow-hidden">
-        <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
-            <h3 className="text-xs font-medium text-gray-500 uppercase">Email Addresses</h3>
+    <div className="subscriber-list">
+        <div className="subscriber-header">
+            <h3>Email Addresses</h3>
         </div>
-        <ul className="divide-y divide-gray-200 bg-white">
+        <ul className="subscriber-list-items">
             {displaySubs.map(s => (
-                <li key={s._id} className="px-6 py-4 text-sm text-gray-800 hover:bg-gray-50">
+                <li key={s._id}>
                     {s.email}
                 </li>
             ))}
-            {displaySubs.length === 0 && <li className="px-6 py-4 text-sm text-gray-500 text-center">No subscribers yet.</li>}
+            {displaySubs.length === 0 && <li className="empty-state">No subscribers yet.</li>}
         </ul>
     </div>
   );

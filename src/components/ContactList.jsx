@@ -46,26 +46,26 @@ export default function ContactList() {
   const displayContacts = contacts.length > 0 ? contacts : fallbackContacts;
 
   return (
-    <div className="overflow-x-auto border rounded-lg">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="table-container">
+      <table className="data-table">
+        <thead>
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Full Name</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Mobile</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">City</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>City</th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody>
           {displayContacts.map(c => (
-            <tr key={c._id} className="hover:bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{c.fullName}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{c.email}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{c.mobile}</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{c.city}</td>
+            <tr key={c._id}>
+              <td>{c.fullName}</td>
+              <td>{c.email}</td>
+              <td>{c.mobile}</td>
+              <td>{c.city}</td>
             </tr>
           ))}
-          {displayContacts.length === 0 && <tr><td colSpan="4" className="text-center py-4 text-gray-500">No submissions yet.</td></tr>}
+          {displayContacts.length === 0 && <tr><td colSpan="4" className="empty-state">No submissions yet.</td></tr>}
         </tbody>
       </table>
     </div>

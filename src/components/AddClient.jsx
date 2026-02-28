@@ -31,25 +31,23 @@ export default function AddClient() {
 
   return (
     <form onSubmit={submit} className="max-w-xl space-y-4">
-      <div className="grid grid-cols-2 gap-4">
-          <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Client Name</label>
-              <input required className="w-full p-2 border rounded" value={client.name} onChange={e => setClient({...client, name: e.target.value})} />
-          </div>
-          <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Designation</label>
-              <input required className="w-full p-2 border rounded" placeholder="e.g. CEO" value={client.designation} onChange={e => setClient({...client, designation: e.target.value})} />
-          </div>
+      <div className="form-group-admin">
+          <label className="form-label">Client Name</label>
+          <input required className="form-input-admin" value={client.name} onChange={e => setClient({...client, name: e.target.value})} />
       </div>
-      <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Testimonial Description</label>
-          <textarea required className="w-full p-2 border rounded h-24" value={client.description} onChange={e => setClient({...client, description: e.target.value})} />
+      <div className="form-group-admin">
+          <label className="form-label">Designation</label>
+          <input required className="form-input-admin" placeholder="e.g. CEO" value={client.designation} onChange={e => setClient({...client, designation: e.target.value})} />
       </div>
-      <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Profile Image</label>
-          <input type="file" ref={fileInputRef} required className="w-full p-2 border rounded bg-gray-50" accept="image/*" onChange={e => setImage(e.target.files[0])} />
+      <div className="form-group-admin">
+          <label className="form-label">Testimonial Description</label>
+          <textarea required className="form-input-admin form-textarea" value={client.description} onChange={e => setClient({...client, description: e.target.value})} />
       </div>
-      <button type="submit" disabled={loading} className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:bg-blue-300">
+      <div className="form-group-admin">
+          <label className="form-label">Profile Image</label>
+          <input type="file" ref={fileInputRef} required className="form-file-input" accept="image/*" onChange={e => setImage(e.target.files[0])} />
+      </div>
+      <button type="submit" disabled={loading} className="btn-primary-admin">
          {loading ? "Adding..." : "Add Client"}
       </button>
     </form>

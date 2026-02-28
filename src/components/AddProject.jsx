@@ -34,19 +34,19 @@ export default function AddProject() {
 
   return (
     <form onSubmit={submit} className="max-w-xl space-y-4">
-      <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Project Name</label>
-          <input className="w-full p-2 border rounded" value={name} onChange={e => setName(e.target.value)} />
+      <div className="form-group-admin">
+          <label className="form-label">Project Name</label>
+          <input className="form-input-admin" value={name} onChange={e => setName(e.target.value)} />
       </div>
-      <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-          <textarea className="w-full p-2 border rounded h-24" value={description} onChange={e => setDescription(e.target.value)} />
+      <div className="form-group-admin">
+          <label className="form-label">Description</label>
+          <textarea className="form-input-admin form-textarea" value={description} onChange={e => setDescription(e.target.value)} />
       </div>
-      <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Project Image</label>
-          <input type="file" ref={fileInputRef} className="w-full p-2 border rounded bg-gray-50" accept="image/*" onChange={e => setImage(e.target.files[0])} />
+      <div className="form-group-admin">
+          <label className="form-label">Project Image</label>
+          <input type="file" ref={fileInputRef} className="form-file-input" accept="image/*" onChange={e => setImage(e.target.files[0])} />
       </div>
-      <button type="submit" disabled={loading} className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:bg-blue-300">
+      <button type="submit" disabled={loading} className="btn-primary-admin">
           {loading ? "Adding..." : "Add Project"}
       </button>
     </form>
