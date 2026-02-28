@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "npx vite build",
+    "preview": "npx vite preview",
+    "postinstall": "npx vite build"
   },
   "dependencies": {
     "axios": "^1.13.5",
