@@ -5,6 +5,7 @@ import AddClient from "../components/AddClient";
 import ContactList from "../components/ContactList";
 import SubscriberList from "../components/SubscriberList";
 import Logo from "../assets/images/logo.svg";
+import "../admin-dashboard.css";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("projects");
