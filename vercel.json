@@ -4,7 +4,7 @@
   ],
   "build": {
     "env": {
-      "VITE_API_URL": "@api-url"
+      "VITE_API_URL": "https://real-trust-backend-040k.onrender.com/api"
     }
   }
 }
