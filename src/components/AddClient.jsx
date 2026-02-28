@@ -7,13 +7,11 @@ export default function AddClient() {
   const [fetching, setFetching] = useState(true);
   const [editingId, setEditingId] = useState(null);
   
-  // Form fields
   const [client, setClient] = useState({ name: "", designation: "", description: "" });
   const [image, setImage] = useState(null);
   const [existingImage, setExistingImage] = useState("");
   const fileInputRef = useRef(null);
 
-  // Fetch clients on mount
   useEffect(() => {
     fetchClients();
   }, []);
@@ -92,7 +90,6 @@ export default function AddClient() {
     }
   };
 
-  // Helper to get image URL
   const getImageUrl = (img) => {
     if (!img) return "https://via.placeholder.com/150";
     if (img.startsWith('http')) return img;
@@ -101,7 +98,6 @@ export default function AddClient() {
 
   return (
     <div className="manage-clients-container">
-      {/* Form Section */}
       <div className="client-form-section">
         <h3>{editingId ? "Edit Client" : "Add New Client"}</h3>
         <form onSubmit={submit} className="client-form">
@@ -166,7 +162,6 @@ export default function AddClient() {
         </form>
       </div>
 
-      {/* List Section - Using landing page clients-grid style */}
       <div className="clients-list-section">
         <h3>All Clients ({clients.length})</h3>
         {fetching ? (

@@ -4,7 +4,6 @@ import API from "../services/api";
 export default function ProjectsSection() {
   const [projects, setProjects] = useState([]);
 
-  // Static fallback data for demonstration
   const fallbackProjects = [
     {
       _id: "1",
@@ -45,7 +44,6 @@ export default function ProjectsSection() {
       });
   }, []);
 
-  // Use fallback data if no projects from API
   const displayProjects = projects.length > 0 ? projects : fallbackProjects;
 
   return (

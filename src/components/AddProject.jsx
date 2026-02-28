@@ -7,14 +7,12 @@ export default function AddProject() {
   const [fetching, setFetching] = useState(true);
   const [editingId, setEditingId] = useState(null);
   
-  // Form fields
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [existingImage, setExistingImage] = useState("");
   const fileInputRef = useRef(null);
 
-  // Fetch projects on mount
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -94,7 +92,6 @@ export default function AddProject() {
     }
   };
 
-  // Helper to get image URL
   const getImageUrl = (img) => {
     if (!img) return "https://via.placeholder.com/400x250";
     if (img.startsWith('http')) return img;
@@ -103,7 +100,6 @@ export default function AddProject() {
 
   return (
     <div className="manage-projects-container">
-      {/* Form Section */}
       <div className="project-form-section">
         <h3>{editingId ? "Edit Project" : "Add New Project"}</h3>
         <form onSubmit={submit} className="project-form">
@@ -156,7 +152,6 @@ export default function AddProject() {
         </form>
       </div>
 
-      {/* List Section - Using landing page projects-grid style */}
       <div className="projects-list-section">
         <h3>All Projects ({projects.length})</h3>
         {fetching ? (

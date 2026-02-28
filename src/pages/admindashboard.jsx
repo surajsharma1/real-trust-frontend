@@ -35,7 +35,6 @@ export default function AdminDashboard() {
 
   return (
     <div className="admin-dashboard">
-      {/* Sidebar Navigation */}
       <aside className="admin-sidebar">
         <div className="sidebar-header">
           <img src={Logo} alt="Logo" className="sidebar-logo" />
@@ -62,7 +61,6 @@ export default function AdminDashboard() {
         </div>
       </aside>
 
-      {/* Main Content Area */}
       <main className="admin-main">
         <header className="admin-header">
             <div>
@@ -71,7 +69,6 @@ export default function AdminDashboard() {
             </div>
         </header>
         
-        {/* Dynamic Component Rendering */}
         <div className="admin-content-card">
             {activeTab === "projects" && <AddProject />}
             {activeTab === "clients" && <AddClient />}

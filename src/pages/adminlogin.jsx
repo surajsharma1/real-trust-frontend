@@ -29,7 +29,6 @@ export default function AdminLogin() {
 
     return (
         <div className="login-page">
-            {/* Background Shapes */}
             <div className="bg-shapes">
                 <div className="shape shape-1"></div>
                 <div className="shape shape-2"></div>

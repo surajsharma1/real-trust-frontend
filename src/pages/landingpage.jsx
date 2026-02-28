@@ -4,7 +4,6 @@ import ClientsSection from "../components/clientselection";
 import ContactForm from "../components/contactform";
 import Newsletter from "../components/newsletter";
 
-// Import assets - using static imports
 import Logo from "../assets/images/logo.svg";
 import HeroImage from "../assets/images/young-couple-examining-blueprints-with-real-estate-agent-while-buying-new-home 1.svg";
 import HomeIcon from "../assets/icons/home.svg";
@@ -14,7 +13,6 @@ import LinkedinIcon from "../assets/icons/Linkedin.svg";
 import FrameIcon from "../assets/icons/Frame.svg";
 import GroupIcon from "../assets/icons/Group.svg";
 
-// Import shapes as URLs
 import shape1 from "../assets/shapes/Ellipse 1.svg";
 import shape2 from "../assets/shapes/Ellipse 7.svg";
 import shape3 from "../assets/shapes/Ellipse 8.svg";
@@ -33,7 +31,6 @@ export default function LandingPage() {
 
   return (
     <div className="landing-page">
-      {/* Decorative Shapes Background */}
       <div className="bg-shapes">
         <img src={shape1} alt="" className="shape shape-1" />
         <img src={shape2} alt="" className="shape shape-2" />
@@ -68,7 +65,6 @@ export default function LandingPage() {
             <button className="btn-outline">View Projects</button>
           </div>
           
-          {/* Service Icons */}
           <div className="service-icons">
             <div className="service-icon">
               <img src={HomeIcon} alt="Consultation" />
@@ -95,7 +91,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Services Section */}
       <section id="services" className="services-section">
         <h2 className="section-title">Our Services</h2>
         <div className="services-grid">
@@ -141,7 +136,6 @@ export default function LandingPage() {
         <Newsletter />
       </div>
       
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo">

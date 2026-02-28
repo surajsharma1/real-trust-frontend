@@ -4,7 +4,6 @@ import API from "../services/api";
 export default function ClientsSection() {
   const [clients, setClients] = useState([]);
 
-  // Static fallback data for demonstration
   const fallbackClients = [
     {
       _id: "1",
@@ -42,7 +41,6 @@ export default function ClientsSection() {
       });
   }, []);
 
-  // Use fallback data if no clients from API
   const displayClients = clients.length > 0 ? clients : fallbackClients;
 
   return (
