@@ -18,7 +18,7 @@ export default function AdminLogin() {
             const res = await API.post("/admin/login", form);
             localStorage.setItem("token", res.data.token);
             alert("Login successful");
-            window.location.href = "/admin";
+            navigate("/admin/dashboard");
         } catch (err) {
             setError("Invalid credentials. Please try again.");
             console.error(err);
